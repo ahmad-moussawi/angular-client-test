@@ -23,7 +23,7 @@
     </button>
   </div>
   <div class="nav-items">
-    <ng-container *ngIf="!(isLoggedIn$ | async)">
+    <ng-container *ngIf="!isLoggedIn()">
       <span
         [routerLink]="['/login']"
         routerLinkActive="router-link-active"
@@ -38,7 +38,7 @@
       >
     </ng-container>
 
-    <ng-container *ngIf="(isLoggedIn$ | async)">
+    <ng-container *ngIf="isLoggedIn()">
       <span
         class="text-xl cursor-pointer text-gray-200 font-bold m-3 hover:underline hover:text-indigo-200"
         >Cart</span
