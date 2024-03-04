@@ -1,0 +1,56 @@
+<div class="lg:w-3/12 mt-10 shadow-md mx-auto pb-20 min-w-fit">
+  <h3 class="text-3xl text-center font-semibold py-5">Reset your password</h3>
+  <form [formGroup]="resetForm" class="flex flex-col min-w-fit">
+    <div *ngIf="responseError.length > 0" class="mx-3">
+      <span class="text-red-800">{{ responseError }}</span>
+    </div>
+    <div class="flex flex-col mt-1 p-3">
+      <input
+        formControlName="password"
+        type="password"
+        placeholder="Password"
+        class="block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
+      />
+      <span
+        *ngIf="
+          resetForm.hasError('required', 'password') &&
+          resetForm.controls['password'].dirty
+        "
+        class="text-red-500 mx-1"
+        >*A password is required</span
+      >
+    </div>
+    <div class="flex flex-col mt-1 p-3">
+      <input
+        formControlName="confirmPassword"
+        type="password"
+        placeholder="Confirm Password"
+        class="block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
+      />
+      <span
+        *ngIf="
+          resetForm.hasError('required', 'confirmPassword') &&
+          resetForm.controls['confirmPassword'].dirty
+        "
+        class="text-red-500 mx-1"
+        >*Confirm your password</span
+      >
+      <span
+        *ngIf="
+          resetForm.hasError('confirmPasswordValidator', 'confirmPassword')
+        "
+        class="text-red-500 mx-1"
+        >*Passwords do not match</span
+      >
+    </div>
+    <button
+      [disabled]="resetForm.invalid"
+      (click)="resetPassword()"
+      class="bg-blue-500 m-3 p-3 hover:bg-blue-700 disabled:bg-gray-300 active:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 text-md text-white disabled:font-semibold h-12 rounded dark:bg-slate-700 dark:hover:bg-slate-600 pointer-events-auto"
+    >
+      Save New Password
+    </button>
+  </form>
+  <div class="flex justify-between">
+</div>
+</div>
